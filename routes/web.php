@@ -20,6 +20,12 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('index');
 });
+Route::get('/genre', function () {
+    return view('genre');
+});
+Route::get('/login', function () {
+    return view('login');
+});
 
 Auth::routes();
 
