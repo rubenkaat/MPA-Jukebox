@@ -18,5 +18,7 @@ class GenreSeeder extends Seeder
         DB::table('genres')->insert([ 'name' => 'Black Metal' ]);
         DB::table('genres')->insert([ 'name' => 'Death Metal' ]);
         DB::table('genres')->insert([ 'name' => 'Deathcore']);
+        DB::table('genres')->insert([ 'name' => 'Country']);
+        DB::table('genres')->insert([ 'name' => 'Doom Metal']);
     }
 }
