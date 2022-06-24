@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ Route::get('/index', function () {
     return view('index');
 });
 Route::get('/genre', function () {
-    return view('genre');
+    
 });
 Route::get('/login', function () {
     return view('login');
@@ -29,4 +31,6 @@ Route::get('/login', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/genres', [GenreController::class, 'getGenres']);
+Route::get('/genre', [SongController::class, 'getSongs']);

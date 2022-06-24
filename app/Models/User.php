@@ -43,7 +43,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * public function
+     * public function 
      * return $this->hasMany(example::class)
      * 
      * return $this->belongsToMany/one()
