@@ -20,6 +20,7 @@ class CreateSongsTable extends Migration
             $table->integer('duration');
             $table->UnsignedBiginteger('genre_id');
             $table->foreign('genre_id')->references('id')->on('genres');
+            $table->string('image');
         });
     }
 

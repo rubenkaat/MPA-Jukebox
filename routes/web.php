@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\SongController;
+use App\Http\Controllers\PlaylistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +24,6 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('index');
 });
-Route::get('/genre', function () {
-    
-});
 Route::get('/login', function () {
     return view('login');
 });
@@ -33,4 +32,6 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/genres', [GenreController::class, 'getGenres']);
-Route::get('/genre', [SongController::class, 'getSongs']);
+Route::get('/songs/{id}', [SongController::class, 'getSongs']);
+Route::get('/songdetail/{id}', [SongController::class, 'ShowDetails']);
+Route::get('/playlist', [PlaylistController::class, 'index']);

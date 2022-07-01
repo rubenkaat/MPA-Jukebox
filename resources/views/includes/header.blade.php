@@ -60,15 +60,18 @@
                                     @csrf
                                 </form>
                             </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/genre">{{__('Genres') }}</a>
+                                <a class="nav-link" href="/genres">{{__('Genres') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/playlist">{{__('Playlist')}}</a>
                             </li>
                         @endguest
                     </ul>

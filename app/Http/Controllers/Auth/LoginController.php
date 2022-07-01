@@ -20,7 +20,7 @@ class LoginController extends Controller
     */
 
     protected function logout (){
-        return redirect("/index");
+        return redirect("/genres");
     }
 
     use AuthenticatesUsers;
