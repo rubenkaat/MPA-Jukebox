@@ -34,4 +34,5 @@ Route::get('/genres', [GenreController::class, 'getGenres']);
 Route::get('/songs/{id}', [SongController::class, 'getSongs']);
 Route::get('/songdetail/{id}', [SongController::class, 'ShowDetails']);
 Route::get('/playlist', [PlaylistController::class, 'index']);
-Route::get('/addToPlaylist/{song}', [PlaylistController::class, 'addSongToPlaylist']);
+Route::get('/addToPlaylist/{id}', [PlaylistController::class, 'addSongToPlaylist']);
+Route::get('/deleteFromPlaylist/{song}', [PlaylistController::class, 'deleteSongFromPlaylist']);

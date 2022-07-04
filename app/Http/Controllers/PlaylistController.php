@@ -11,12 +11,19 @@ class PlaylistController extends Controller
     public function index(Request $request){
         $playlist = new Playlist($request);
         $allsongs = $playlist->getPlaylist();
-
         return view ('playlist', ['playlist' => $allsongs]);
     }
-    public function addSongToPlaylist(request $request, Song $song){
+    public function addSongToPlaylist(request $request, $song){
         $playlist = new Playlist($request);
-        $playlist->addToPlaylist($song);
+        $songtest = Song::findOrFail($song);
+        $playlist->addToPlaylist($songtest);
+        $playlist->saveSession($request);
+        return back();
+    }
+    public function deleteSongFromPlaylist(Request $request,  $song){
+        $playlist = new Playlist($request);
+        $playlist->deleteFromPlaylist($song);
+        $playlist->saveSession($request);
         return back();
     }
 }
