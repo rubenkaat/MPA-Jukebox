@@ -1,2 +1,6 @@
 @include('includes.header')
-{{$playlist}}
+<body>
+    @foreach($playlist as $song)
+    {{$song->name}}
+    @endforeach
+</body>

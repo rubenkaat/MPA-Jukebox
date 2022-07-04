@@ -5,7 +5,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\PlaylistController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +34,4 @@ Route::get('/genres', [GenreController::class, 'getGenres']);
 Route::get('/songs/{id}', [SongController::class, 'getSongs']);
 Route::get('/songdetail/{id}', [SongController::class, 'ShowDetails']);
 Route::get('/playlist', [PlaylistController::class, 'index']);
+Route::get('/addToPlaylist/{song}', [PlaylistController::class, 'addSongToPlaylist']);
