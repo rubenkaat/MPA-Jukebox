@@ -33,6 +33,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/genres', [GenreController::class, 'getGenres']);
 Route::get('/songs/{id}', [SongController::class, 'getSongs']);
 Route::get('/songdetail/{id}', [SongController::class, 'ShowDetails']);
-Route::get('/playlist', [PlaylistController::class, 'index']);
+Route::get('/queue', [PlaylistController::class, 'index'])->name('playlist');
 Route::get('/addToPlaylist/{id}', [PlaylistController::class, 'addSongToPlaylist']);
-Route::get('/deleteFromPlaylist/{song}', [PlaylistController::class, 'deleteSongFromPlaylist']);
+Route::get('/deleteFromPlaylist/{id}', [PlaylistController::class, 'deleteSongFromPlaylist']);
+Route::get('/savePlaylist', [PlaylistController::class, 'savePlaylist']);
+Route::get('/playlists', [PlaylistController::class, 'getPlaylists']);
+Route::get('/playlistdetails/{id}', [PlaylistController::class, 'getPlaylistDetails']);
+

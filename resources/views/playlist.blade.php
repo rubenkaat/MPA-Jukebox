@@ -1,7 +1,6 @@
 @include('includes.header')
 <body>
     @foreach($playlist as $song)
-    {{dd($song)}}
     <div style="border-style: double;">
         <h1>{{$song->name}} - {{$song->artist}}</h1>
         <div class="image-box">
@@ -10,4 +9,8 @@
         <a href="{{url('/deleteFromPlaylist', $song->id)}}" class="btn btn-danger">Delete from Playlist</a>
     </div>
     @endforeach
+    <form action='/savePlaylist' method='get'>
+        <input type="text" placeholder="enter playlist name" name="name">
+        <input class="btn btn-success" type="submit" value="Save">
+    </form>
 </body>

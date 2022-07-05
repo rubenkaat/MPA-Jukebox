@@ -71,7 +71,10 @@
                                 <a class="nav-link" href="/genres">{{__('Genres') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/playlist">{{__('Playlist')}}</a>
+                                <a class="nav-link" href="/queue">{{__('Queue')}}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/playlists">{{__('Playlists')}}</a>
                             </li>
                         @endguest
                     </ul>
