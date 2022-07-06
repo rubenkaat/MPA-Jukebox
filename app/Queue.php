@@ -24,9 +24,20 @@ class Queue{
        session()->push('playlist', $song);
     }
     public function deleteFromPlaylist($songId){
-        $song = Song::findOrFail($songId);
+        $session = session()->get('playlist');
+        foreach($session as $index => $song){
+            if($song->id == $songId){
+                unset($session[$index]);
+                session()->forget('playlist');
+                $session = array_values($session);
+                foreach($session as $newSession){
+                    session()->push('playlist', $newSession);
+                }
+                return;
+            }
+        }
+        
 
-        unset(session('playlist')[$songId]);
     }
 }
 ?>

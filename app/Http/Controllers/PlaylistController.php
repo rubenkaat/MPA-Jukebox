@@ -12,7 +12,12 @@ class PlaylistController extends Controller
     public function index(Request $request){
         $playlist = new Queue($request);
         $allsongs = $playlist->getPlaylist();
-        return view ('playlist', ['playlist' => $allsongs]);
+        $totalTime = 0;
+        foreach($allsongs as $song){
+            $totalTime += $song->duration;
+        }
+        $totalTime = gmdate("H:i:s", $totalTime);
+        return view ('playlist', ['playlist' => $allsongs, 'totalTime' => $totalTime]);
     }
     public function addSongToPlaylist(request $request, $songId){
         $playlist = new Queue($request);
@@ -36,6 +41,11 @@ class PlaylistController extends Controller
     }
     public function getPlaylistDetails($id){
         $playlist = Playlist::where('id', $id)->get();
-        return view ('playlistdetails', compact('playlist'));
+        $totalTime = 0;
+        foreach($playlist[0]->songs as $song){
+            $totalTime += $song->duration;
+        }
+        $totalTime = gmdate("H:i:s", $totalTime);
+        return view ('playlistdetails', compact('playlist', 'totalTime'));
     }
 }
