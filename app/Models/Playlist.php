@@ -11,6 +11,7 @@ use App\Models\PlaylistSong;
 class Playlist extends Model
 {
     protected $table = 'playlist';
+    public $timestamps = false;
 
     public function songs(){
         return $this->belongsToMany(Song::class);

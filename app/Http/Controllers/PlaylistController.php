@@ -25,7 +25,7 @@ class PlaylistController extends Controller
         $playlist->addToQueue($songId);
         return back();
     }
-    public function deleteSongFromPlaylist(Request $request,  $songId){
+    public function deleteSongFromQueue(Request $request,  $songId){
         $playlist = new Queue($request);
         $playlist->deleteFromPlaylist($songId);
         return redirect()->route('playlist');
@@ -55,6 +55,16 @@ class PlaylistController extends Controller
             'song_id' => $songId,
             'playlist_id' => $playlistId
         ]);
+        return back();
+    }
+    public function deleteSongFromPlaylist($songId, $playlistId){
+        PlaylistSong::where('song_id', $songId)->where('playlist_id', $playlistId)->take(1)->delete();
+        return back();
+    }
+    public function editPlaylistName(){
+        $name = $_GET['name'];
+        $playlistId = $_GET['playlistId'];
+        $playlist = Playlist::where('id', $playlistId)->update(['name' => $name]);
         return back();
     }
 }

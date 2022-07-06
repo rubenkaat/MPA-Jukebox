@@ -23,7 +23,7 @@ class Queue{
         $song = Song::findOrFail($songId);
        session()->push('playlist', $song);
     }
-    public function deleteFromPlaylist($songId){
+    public function deleteFromQueue($songId){
         $session = session()->get('playlist');
         foreach($session as $index => $song){
             if($song->id == $songId){

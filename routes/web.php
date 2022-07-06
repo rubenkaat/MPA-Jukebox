@@ -35,9 +35,11 @@ Route::get('/songs/{id}', [SongController::class, 'getSongs']);
 Route::get('/songdetail/{id}', [SongController::class, 'ShowDetails']);
 Route::get('/queue', [PlaylistController::class, 'index'])->name('playlist');
 Route::get('/addToQueue/{id}', [PlaylistController::class, 'addSongToQueue']);
-Route::get('/deleteFromPlaylist/{id}', [PlaylistController::class, 'deleteSongFromPlaylist']);
+Route::get('/deleteFromQueue/{id}', [PlaylistController::class, 'deleteSongFromQueue']);
 Route::get('/savePlaylist', [PlaylistController::class, 'savePlaylist']);
 Route::get('/playlists', [PlaylistController::class, 'getPlaylists']);
 Route::get('/playlistdetails/{id}', [PlaylistController::class, 'getPlaylistDetails']);
 Route::get('/addSongToPlaylist/{song_id}/{playlist_id}', [PlaylistController::class, 'addSongToPlaylist'])->name('addToPlaylist');
+Route::get('/deleteSongFromPlaylist/{song_id}/{playlist_id}', [PlaylistController::class, 'deleteSongFromPlaylist'])->name('deleteSongFromPlaylist');
+Route::get('/editPlaylistName', [PlaylistController::class, 'editPlaylistName']);
 

@@ -12,6 +12,7 @@
     </div>
     @endforeach
     <form action='/savePlaylist' method='get'>
+        @csrf
         <input type="text" placeholder="enter playlist name" name="name">
         <input class="btn btn-success" type="submit" value="Save">
     </form>

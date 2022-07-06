@@ -1,9 +1,18 @@
 @include('includes.header')
 <body>
     <h1>{{$playlist[0]->name}}</h1>
+    <form action="/editPlaylistName" method="GET">
+        @csrf
+        <input type="hidden" name="playlistId" value="{{$playlist[0]->id}}">
+        <input type="text" name="name" placeholder="enter new name">
+        <input type="submit">
+    </form>
     <p>Total time: {{$totalTime}}</p>
     @foreach($playlist[0]->songs as $song)
+    <hr>
     <p>{{$song->name}} - {{$song->artist}} - {{gmdate("i:s", $song->duration)}}</p>
+    <a href="{{route('deleteSongFromPlaylist', [$song->id, $playlist[0]->id])}}">Delete from Playlist</a>
+    <hr>
     @endforeach
     <hr>
     @foreach($songs as $song)
