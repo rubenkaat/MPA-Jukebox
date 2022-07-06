@@ -11,8 +11,8 @@ use App\Models\PlaylistSong;
 class PlaylistController extends Controller
 {
     public function index(Request $request){
-        $playlist = new Queue($request);
-        $allsongs = $playlist->getPlaylist();
+        $queue = new Queue($request);
+        $allsongs = $queue->getPlaylist();
         $totalTime = 0;
         if(isset($allsongs)){
             foreach($allsongs as $song){
@@ -20,8 +20,11 @@ class PlaylistController extends Controller
             }
         }
         $totalTime = gmdate("H:i:s", $totalTime);
-        return view ('playlist', ['playlist' => $allsongs, 'totalTime' => $totalTime]);
+        return view ('queue', ['playlist' => $allsongs, 'totalTime' => $totalTime]);
     }
+    /**
+     * functions for queue management
+     */
     public function addSongToQueue(request $request, $songId){
         $playlist = new Queue($request);
         $playlist->addToQueue($songId);
@@ -32,6 +35,9 @@ class PlaylistController extends Controller
         $playlist->deleteFromPlaylist($songId);
         return redirect()->route('playlist');
     }
+    /**
+     * functions for playlist management
+     */
     public function savePlaylist(){
         $name = $_GET['name'];
         $playlist = new Playlist();

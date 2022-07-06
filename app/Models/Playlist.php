@@ -13,6 +13,9 @@ class Playlist extends Model
     protected $table = 'playlist';
     public $timestamps = false;
 
+    /**
+     * defines the relation between playlists and songs
+     */
     public function songs(){
         return $this->belongsToMany(Song::class);
     }

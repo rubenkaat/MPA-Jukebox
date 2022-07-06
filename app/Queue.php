@@ -19,6 +19,9 @@ class Queue{
         $playlist = session()->get('playlist');
         return $playlist;
     }
+    /**
+     * adding/deleting songs to/from queue
+     */
     public function addToQueue($songId){
         $song = Song::findOrFail($songId);
        session()->push('playlist', $song);

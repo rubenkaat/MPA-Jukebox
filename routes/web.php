@@ -33,7 +33,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/genres', [GenreController::class, 'getGenres']);
 Route::get('/songs/{id}', [SongController::class, 'getSongs']);
 Route::get('/songdetail/{id}', [SongController::class, 'ShowDetails']);
-Route::get('/queue', [PlaylistController::class, 'index'])->name('playlist');
+Route::get('/queue', [PlaylistController::class, 'index'])->name('queue');
 Route::get('/addToQueue/{id}', [PlaylistController::class, 'addSongToQueue']);
 Route::get('/deleteFromQueue/{id}', [PlaylistController::class, 'deleteSongFromQueue']);
 Route::get('/savePlaylist', [PlaylistController::class, 'savePlaylist']);
