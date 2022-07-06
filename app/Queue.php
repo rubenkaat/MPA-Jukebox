@@ -19,7 +19,7 @@ class Queue{
         $playlist = session()->get('playlist');
         return $playlist;
     }
-    public function addToPlaylist($songId){
+    public function addToQueue($songId){
         $song = Song::findOrFail($songId);
        session()->push('playlist', $song);
     }

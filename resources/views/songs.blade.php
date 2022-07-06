@@ -7,6 +7,6 @@
             <img src="{{$song->image}}" width="300px" height="300px">
         </div>
     </a>
-    <a href="{{url('/addToPlaylist', $song->id)}}">Add to Playlist</a>
+    <a href="{{url('/addToQueue', $song->id)}}">Add to Playlist</a>
     @endforeach
 </body>

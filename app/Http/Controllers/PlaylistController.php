@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Queue;
 use App\Models\Song;
 use App\Models\Playlist;
+use App\Models\PlaylistSong;
 
 class PlaylistController extends Controller
 {
@@ -19,9 +20,9 @@ class PlaylistController extends Controller
         $totalTime = gmdate("H:i:s", $totalTime);
         return view ('playlist', ['playlist' => $allsongs, 'totalTime' => $totalTime]);
     }
-    public function addSongToPlaylist(request $request, $songId){
+    public function addSongToQueue(request $request, $songId){
         $playlist = new Queue($request);
-        $playlist->addToPlaylist($songId);
+        $playlist->addToQueue($songId);
         return back();
     }
     public function deleteSongFromPlaylist(Request $request,  $songId){
@@ -46,6 +47,14 @@ class PlaylistController extends Controller
             $totalTime += $song->duration;
         }
         $totalTime = gmdate("H:i:s", $totalTime);
-        return view ('playlistdetails', compact('playlist', 'totalTime'));
+        $songs = Song::all();
+        return view ('playlistdetails', compact('playlist', 'totalTime', 'songs'));
+    }
+    public function addSongToPlaylist($songId, $playlistId){
+        PlaylistSong::create([
+            'song_id' => $songId,
+            'playlist_id' => $playlistId
+        ]);
+        return back();
     }
 }
