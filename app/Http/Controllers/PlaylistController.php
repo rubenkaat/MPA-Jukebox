@@ -14,8 +14,10 @@ class PlaylistController extends Controller
         $playlist = new Queue($request);
         $allsongs = $playlist->getPlaylist();
         $totalTime = 0;
-        foreach($allsongs as $song){
-            $totalTime += $song->duration;
+        if(isset($allsongs)){
+            foreach($allsongs as $song){
+                $totalTime += $song->duration;
+            }
         }
         $totalTime = gmdate("H:i:s", $totalTime);
         return view ('playlist', ['playlist' => $allsongs, 'totalTime' => $totalTime]);
